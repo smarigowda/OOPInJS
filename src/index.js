@@ -1,6 +1,6 @@
 console.log("Hello, Welcome to OOP in JS");
 
-// factory
+// factory function
 const createCircle = radius => {
   return {
     radius,
@@ -16,3 +16,15 @@ const circle1 = createCircle(1);
 const circle2 = createCircle(2);
 circle1.draw();
 circle2.draw();
+
+// constructor function
+function CreateCircle(radius) {
+    console.log(this);
+    this.radius = radius;
+    this.draw = () => {
+        console.log(`Draw a circle with radius: ${radius}`);
+    }
+}
+
+const circle3 = new CreateCircle(4);
+circle3.draw();
