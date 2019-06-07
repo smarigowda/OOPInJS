@@ -28,3 +28,15 @@ function CreateCircle(radius) {
 
 const circle3 = new CreateCircle(4);
 circle3.draw();
+
+const CreateCircleUsingFunction = new Function('radius', `
+    console.log(this);
+    this.radius = radius;
+    this.draw = () => {
+        console.log('Draw a circle...${this.radius}');
+    }
+`);
+
+CreateCircleUsingFunction.prototype.name = 'CreateCircleUsingFunction'; // no effect, name is readonly
+
+const circle4 = new CreateCircleUsingFunction(20);
