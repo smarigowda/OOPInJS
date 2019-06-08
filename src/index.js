@@ -5,11 +5,15 @@ function Circle(radius) {
   console.log(this);
   // Instance members
   this.radius = radius;
+  this.move = function () {
+    console.log('A complex code to move a circle...!');
+  }
 }
 
 // Prototype members
-Circle.prototype.draw = () => {
-  console.log("complex code to draw a circle");
+Circle.prototype.draw = function() {
+  console.log("A complex code to draw a circle");
+  this.move();
 };
 
 Circle.prototype.toString = function() {
