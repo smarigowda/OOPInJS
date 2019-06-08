@@ -16,4 +16,6 @@ const locationz='locationZ';
 
 circle1[locationz] = { z: 30 }
 
+delete circle1.locationX;
+
 
