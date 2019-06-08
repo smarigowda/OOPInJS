@@ -15,7 +15,7 @@ function Circle() {
 }
 
 Circle.prototype = Object.create(Shape.prototype); // Object.create sets up the prototype properlty
-// Circle.prototype = Shape.prototype // does not work.
+Circle.prototype.constructor = Circle;
 
 const s1 = new Shape();
 const c1 = new Circle();
