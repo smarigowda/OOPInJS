@@ -16,6 +16,18 @@ const locationz='locationZ';
 
 circle1[locationz] = { z: 30 }
 
-delete circle1.locationX;
+// delete circle1.locationX;
 
+for(let key in circle1) {
+    console.log(key);
+    if(typeof circle1[key] === 'function') {
+        console.log(`-- ${key} is a function`);
+    }
+}
 
+let allKeys = Object.keys(circle1);
+console.log(allKeys);
+
+if('radius' in circle1) {
+    console.log('radius exists in circle1');
+}
