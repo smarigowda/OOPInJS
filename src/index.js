@@ -6,6 +6,7 @@ function Circle(radius) {
   // Instance members
   this.radius = radius;
   this.move = function () {
+    this.draw();
     console.log('A complex code to move a circle...!');
   }
 }
@@ -13,7 +14,6 @@ function Circle(radius) {
 // Prototype members
 Circle.prototype.draw = function() {
   console.log("A complex code to draw a circle");
-  this.move();
 };
 
 Circle.prototype.toString = function() {
@@ -22,6 +22,5 @@ Circle.prototype.toString = function() {
 const c1 = new Circle(1);
 const c2 = new Circle(1);
 
-c1.draw();
-c2.draw();
+c1.move();
 console.log(c1.toString());
