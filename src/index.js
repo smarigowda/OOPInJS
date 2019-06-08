@@ -1,36 +1,27 @@
-// Stop watch exercise.
-function StopWatch() {
-    console.log(this);
-    let _duration = 0;
-    let _interval;
-    let _started = false;
-    this.start = () => {
-        if(_started) {
-            throw new Error('Watch is already running, stop it first.');
-        }
-        _interval = setInterval(() => {
-            _duration++;
-        }, 1000);
-        _started = true;
-    }
-    this.stop = () => {
-        if(!_started) {
-            throw new Error('Watch is not yet started. You can can not stop/ reset a watch which is not started yet !');
-        }
-        clearInterval(_interval);
-        console.log('watch stopped.');
-        _started = false;
-    }
-    this.reset = () => {
-        this.stop();
-        _duration = 0;
-        console.log('duration is reset.');
-    }
-    Object.defineProperty(this, 'duration', {
-        get: () => {
-            return _duration;
-        }
-    });
+// lesson
+// prototypes and inheritance
+
+function Circle() {
+  console.log("this is a circle");
+  console.log(this);
 }
-const sw = new StopWatch();
-sw.start();
+
+const circle = new Circle();
+console.log('--- Circle ---');
+console.log('circle.__proto__:', circle.__proto__);
+console.log('Circle.prototype:', Circle.prototype);
+console.log('3:', circle.__proto__ === Circle.prototype);
+
+const square = function () {
+  console.log('This is a square');
+}
+
+console.log('--- Anonymous Function ---');
+console.log('Object.getPrototypeOf(square):', Object.getPrototypeOf(square));
+
+let x = {}; //?
+let y = {}; //?
+let ofx = Object.getPrototypeOf(x);
+let ofy = Object.getPrototypeOf(y);
+ofx === ofy;
+ofx.__proto__ === ofy.__proto__; //?
