@@ -6,9 +6,7 @@ function Circle(radius) {
   const computeOptimumLocation = radius => {
     console.log("-- logic to compute optimum location for radius", radius);
   };
-  this.getDefaultLocation = () => {
-      return defaultLocation;
-  }
+
   console.log(this);
   console.log(`radius: ${radius}`);
   this.radius = radius;
@@ -17,6 +15,11 @@ function Circle(radius) {
     computeOptimumLocation(this.radius);
     console.log(`Draw a circle with radius = ${radius}`);
   };
+  Object.defineProperty(this, 'defaultLocation', {
+      get: function() {
+          return defaultLocation;
+      }
+  })
 }
 
 const circle1 = new Circle(25);
