@@ -1,5 +1,5 @@
 // lesson
-// prototypes and inheritance
+// iterating properties
 
 function Circle(radius) {
   console.log(this);
@@ -16,11 +16,13 @@ Circle.prototype.draw = function() {
   console.log("A complex code to draw a circle");
 };
 
-Circle.prototype.toString = function() {
-  return "Circle with radius: " + this.radius;
-};
 const c1 = new Circle(1);
-const c2 = new Circle(1);
 
-c1.move();
-console.log(c1.toString());
+console.log(Object.keys(c1));
+
+for(key in c1) {
+  console.log(key);
+}
+
+console.log(c1.hasOwnProperty('radius'));
+console.log(c1.hasOwnProperty('draw'));
