@@ -1,3 +1,8 @@
+function extend(Child, Parent) {
+    Child.prototype = Object.create(Parent.prototype);
+    Child.prototype.constructor = Child;
+}
+
 function Shape(color) {
 }
 
@@ -8,13 +13,23 @@ Shape.prototype.duplicate = function() {
 function Circle() {
 }
 
-Circle.prototype = Object.create(Shape.prototype); // Object.create sets up the prototype properlty
-Circle.prototype.constructor = Circle;
+extend(Circle, Shape);
 
 Circle.prototype.duplicate = function() {
-    Shape.prototype.duplicate.call(this);
-    console.log('duplicate method...Circle constructor')
+    console.log('duplicate method...on Circle prototype');
 }
 
-const c1 = new Circle();
-c1.duplicate();
+function Square() {
+}
+
+extend(Square, Shape);
+
+Square.prototype.duplicate = function() {
+    console.log('duplicate method...on Square prototype');
+}
+
+let shapes = [new Circle(), new Square(), new Shape()];
+
+for(let shape of shapes) {
+    shape.duplicate();
+}
