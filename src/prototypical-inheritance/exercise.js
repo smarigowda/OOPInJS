@@ -8,8 +8,8 @@ HTMLElement.prototype.focus = function() {
   console.log("focus function...");
 };
 
-function HTMLSelectElement() {
-  this.items = [];
+function HTMLSelectElement(items = []) {
+  this.items = items;
   this.addItem = item => {
     this.items.push(item);
   };
@@ -24,7 +24,7 @@ function HTMLSelectElement() {
 
 // click function is not included when we setup prototype chain
 // using Object.create
-HTMLSelectElement.prototype = Object.create(HTMLElement.prototype);
+HTMLSelectElement.prototype = new HTMLElement();
 HTMLSelectElement.prototype.constructor = HTMLSelectElement;
 
 const e1 = new HTMLElement();
