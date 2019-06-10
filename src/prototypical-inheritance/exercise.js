@@ -22,6 +22,8 @@ function HTMLSelectElement() {
   };
 }
 
+// click function is not included when we setup prototype chain
+// using Object.create
 HTMLSelectElement.prototype = Object.create(HTMLElement.prototype);
 HTMLSelectElement.prototype.constructor = HTMLSelectElement;
 
