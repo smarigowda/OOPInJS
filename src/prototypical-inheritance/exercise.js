@@ -35,16 +35,20 @@ function HTMLSelectElement(items = []) {
 HTMLSelectElement.prototype = new HTMLElement();
 HTMLSelectElement.prototype.constructor = HTMLSelectElement;
 
+function HTMLImageElement(src) {
+    this.src = src;
+    this.render = function() {
+        return `<img src='${this.src}'></img>`;
+    }
+}
+HTMLImageElement.prototype = new HTMLElement();
+HTMLImageElement.prototype.constructor = HTMLImageElement;
 
+const list = [
+    new HTMLSelectElement(['1', '2', '3']),
+    new HTMLImageElement()
+];
 
-const e1 = new HTMLElement();
-const e2 = new HTMLSelectElement();
-
-e2.addItem("1");
-e2.addItem("2");
-e2.addItem("3");
-e2.addItem("4");
-
-e2.removeItem("2");
-console.log(e2);
-e2.render();
+list.forEach(el => {
+    console.log(el.render());
+})
