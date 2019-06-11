@@ -21,12 +21,7 @@ function HTMLSelectElement(items = []) {
     });
   };
   this.render = function () {
-      let output = '<select>\n';
-      this.items.forEach(d => {
-          output += `\t<option>${d}</option>\n`
-      });
-      ;
-      return this.items.length > 0 ? `${output}</select>` : null;
+    return `<select>\n${this.items.map(item => `   <option>${item}</option>\n`).join('')}</select>`
   }
 }
 
