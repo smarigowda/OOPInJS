@@ -1,47 +1,39 @@
 // Stop watch exercise.
-function StopWatch() {
-  console.log(this);
-  let startTime;
-  let endTime;
-  let running = false;
-  this.stop = () => {
-    if (!running) {
-      throw new Error(
-        "Watch is not running. You can can not stop/ reset a watch which is not running!"
-      );
+class StopWatch {
+  #running = false;
+  #startTime = 0;
+  #endTime = 0;
+  #duration = 0;
+
+  start() {
+    if (this.#running) {
+      throw new Error("already running");
     }
-    clearInterval(interval);
-    console.log("watch stopped.");
-    running = false;
-  };
-  this.reset = () => {
-    this.stop();
-    duration = 0;
-    console.log("duration is reset.");
-  };
-  Object.defineProperty(this, "duration", {
-    get: () => {
-      return duration;
+    this.#running = true;
+    this.#startTime = Date.now();
+  }
+  stop() {
+    if (!this.#running) {
+      throw new Error("not running");
     }
-  });
-  Object.defineProperty(this, 'running', {
-      get: function() {
-          return running;
-      }
-  })
+    this.#running = false;
+    this.#endTime = Date.now();
+    this.#duration = this.#duration + (this.#endTime - this.#startTime);
+  }
+
+  get duration() {
+    if (this.#running) {
+      return this.#duration + (Date.now() - this.#startTime);
+    } else {
+      return this.#duration;
+    }
+  }
+  reset() {
+    this.#duration = 0;
+    this.#startTime = 0;
+    this.#endTime = 0;
+    this.#running = false;
+  }
 }
 
-StopWatch.prototype.start = function() {
-    if (this.running) {
-      throw new Error("Watch is already running, stop it first.");
-    }
-    running = true;
-  };
-
-const sw = new StopWatch();
-sw.start();
-console.log(`duration is ${sw.duration} sec`);
-
-setTimeout(() => {
-  console.log(`duration now is ${sw.duration} sec`);
-}, 5000);
+const st1 = new StopWatch();
