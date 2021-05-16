@@ -11,8 +11,8 @@ HtmlElement.prototype.focus = function () {
 const htmlElement = new HtmlElement();
 console.log(htmlElement);
 
-function HtmlSelectElement() {
-  this.items = [];
+function HtmlSelectElement(items=[]) {
+  this.items = items;
   this.addItem = function (item) {
     this.items.push(item);
   };
