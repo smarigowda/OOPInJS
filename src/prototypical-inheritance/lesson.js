@@ -1,10 +1,10 @@
-function Circle(radius) {
-  this.radius = radius;
-}
-
 function Square() {}
-function Shape() {
-  this.shapeType;
+function Shape(color) {
+  this.color = color;
+}
+function Circle(radius) {
+  Shape.call(this, "red");
+  this.radius = radius;
 }
 
 Shape.prototype.duplicate = function () {
