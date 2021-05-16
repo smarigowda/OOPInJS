@@ -1,3 +1,7 @@
+function extend(Child, Parent) {
+  Child.prototype = Object.create(Parent.prototype);
+  Child.prototype.constructor = Child;
+}
 function Square() {}
 function Shape(color) {
   this.color = color;
@@ -11,8 +15,7 @@ Shape.prototype.duplicate = function () {
   console.log("duplicating...");
 };
 
-Circle.prototype = Object.create(Shape.prototype);
-Circle.prototype.constructor = Circle;
+extend(Circle, Shape);
 
 Circle.prototype.draw = function () {
   console.log("drawing a circle...");
@@ -24,7 +27,6 @@ function Square(size, color) {
   this.size = size;
 }
 
-Square.prototype = Object.create(Shape.prototype);
-Square.prototype.constructor = Square;
+extend(Square, Shape);
 
 const s = new Square(10, "blue");
