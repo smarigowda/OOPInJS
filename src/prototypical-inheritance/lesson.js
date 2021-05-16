@@ -11,10 +11,6 @@ function Circle(radius) {
   this.radius = radius;
 }
 
-Shape.prototype.duplicate = function () {
-  console.log("duplicate");
-};
-
 extend(Circle, Shape);
 
 Circle.prototype.draw = function () {
@@ -22,7 +18,7 @@ Circle.prototype.draw = function () {
 };
 
 Circle.prototype.duplicate = function () {
-  Shape.prototype.duplicate.call(this);
+  //   Shape.prototype.duplicate.call(this);
   console.log("duplicate circle");
 };
 
@@ -34,5 +30,56 @@ function Square(size, color) {
 }
 
 extend(Square, Shape);
+Shape.prototype.duplicate = function () {
+  console.log("duplicate");
+};
+
+Square.prototype.duplicate = function () {
+  console.log("duplicate square...");
+};
 
 const s = new Square(10, "blue");
+
+// console.log(s.duplicate());
+// console.log(c.duplicate());
+
+const shapes = [new Circle(10, "green"), new Square(20, "blue")];
+
+// shapes.forEach( shape => shape.duplicate());
+
+// ------------- Mixin -------------
+
+const canWalk = {
+    walk: function() {
+        console.log('walking...');
+    }
+}
+
+const canEat = {
+    eat: function() {
+        console.log('eating...');
+    }
+}
+
+const canSwim = {
+    siwm: function() {
+        console.log('swimming...');
+    }
+}
+
+function Person(name) {
+    this.name = name;
+}
+
+Object.assign(Person.prototype, canWalk, canEat)
+
+const person = new Person('Santosh');
+
+function Goldfish(name) {
+    this.name = name;
+}
+
+Object.assign(Goldfish.prototype, canEat, canSwim);
+
+const goldfish = new Goldfish('shiny');
+
