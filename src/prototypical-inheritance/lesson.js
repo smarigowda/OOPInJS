@@ -49,6 +49,10 @@ const shapes = [new Circle(10, "green"), new Square(20, "blue")];
 
 // ------------- Mixin -------------
 
+function mixin(target, ...source) {
+    Object.assign(target, ...source);
+} 
+
 const canWalk = {
     walk: function() {
         console.log('walking...');
@@ -71,7 +75,8 @@ function Person(name) {
     this.name = name;
 }
 
-Object.assign(Person.prototype, canWalk, canEat)
+// Object.assign(Person.prototype, canWalk, canEat)
+mixin(Person.prototype, canWalk, canEat);
 
 const person = new Person('Santosh');
 
@@ -79,7 +84,9 @@ function Goldfish(name) {
     this.name = name;
 }
 
-Object.assign(Goldfish.prototype, canEat, canSwim);
-
+// Object.assign(Goldfish.prototype, canEat, canSwim);
+mixin(Goldfish, canEat, canSwim);
 const goldfish = new Goldfish('shiny');
 
+console.log(person);
+console.log(goldfish);
