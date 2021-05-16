@@ -12,7 +12,7 @@ function Circle(radius) {
 }
 
 Shape.prototype.duplicate = function () {
-  console.log("duplicating...");
+  console.log("duplicate");
 };
 
 extend(Circle, Shape);
@@ -20,6 +20,12 @@ extend(Circle, Shape);
 Circle.prototype.draw = function () {
   console.log("drawing a circle...");
 };
+
+Circle.prototype.duplicate = function () {
+  Shape.prototype.duplicate.call(this);
+  console.log("duplicate circle");
+};
+
 const c = new Circle(1);
 
 function Square(size, color) {
