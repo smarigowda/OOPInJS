@@ -37,3 +37,5 @@ class StopWatch {
 }
 
 const st1 = new StopWatch();
+
+let x = {};
