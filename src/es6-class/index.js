@@ -1,14 +1,19 @@
 class Circle {
-    constructor(radius) {
-        this.radius = radius;
-    }
-    draw() {
-        console.log('drawing circle');
-    }
+  constructor(radius) {
+      this._radius = radius;
+  }
+  get radius() {
+    return this._radius;
+  }
+  set radius(radius) {
+    this._radius = radius;
+  }
 }
 
-console.log(typeof Circle);
-
 const circle = new Circle(1);
-console.log(circle);
+
+console.log(circle.radius);
+circle.radius = 2;
+console.log(circle.radius);
+
 
